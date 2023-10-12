@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+
+nav{
+    display: flex;
+    background: #e1ec13;
+    color: #151514;
+    justify-content: space-around;
+    height: 60px;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    width: 54%;
+    justify-content: space-between;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: rgb(21, 18, 18);
+}
+
+nav ul li a:hover{
+    color: rgb(52, 68, 68);
+}
+
+/* Hamburger Menu */
+
+.menu-toggle{
+    display: none;
+    flex-direction:column;
+    height: 25%;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-toggle input{
+    position: absolute;
+    width: 16px;
+    height: 21px;
+    left: 0px;
+    top: -2px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu-toggle span{
+    display: block;
+    width: 15px;
+    height: 2.4px;
+    background-color: black;
+    transition: all 0.5s;
+}
+
+/* Hamburger Menu Animation */
+
+.menu-toggle span:nth-child(2){
+    /* Ini ibaratkan Ngasih Anchor Point Di after effect supaya tidak ditengah */
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4){
+    /* Ini ibaratkan Ngasih Anchor Point Di after effect supaya tidak ditengah */
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    rotate: 45deg;
+}
+
+.menu-toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-child(4){
+    rotate: -45deg ;
+}
+
+/* ============================================================================================= */
+
+/* Responsive Media */
+
+/* Ukuran Tablet */
+
+@media screen and (max-width: 768px){
+    .menu-toggle{
+        display: none;
+    }
+    nav ul{
+        width: 63%;
+    }
+}
+
+/* Ukuran Mobile */
+
+@media screen and (max-width: 576px){
+    
+    .menu-toggle{
+        display: flex;
+    }
+    nav ul{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background:#c4c5bd;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100vh;
+        z-index: -1;
+        transform: translateX(100%);
+        transition: all 1s;
+        opacity: 0;
+    }
+
+    nav ul.slide{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
